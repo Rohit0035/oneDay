@@ -8,13 +8,17 @@ class AddJournal extends React.Component {
     this.state = {};
   }
 
+  onTrigger = (event) => {
+    this.props.parentCallback(event);
+    // event.preventDefault();
+  };
   render() {
     return (
       <>
         <div className="container">
-          <Row className="createjounal label">
-            <h4 className="newjournalcreatl">Create New Journal</h4>
-          </Row>
+          <div className="text-center">
+            <h4 className="text-center">Create New Journal</h4>
+          </div>
           <Row>
             <Col className="labeland textarea" lg="3">
               <div className="textarea">
@@ -23,9 +27,7 @@ class AddJournal extends React.Component {
             </Col>
             <Col className="labeland textarea" lg="6">
               <div className="textarea">
-                {/*  */}
                 <input type="text" className="form-control" />
-                {/* <input type="date" className="form-control" /> */}
               </div>
             </Col>
           </Row>
@@ -75,6 +77,12 @@ class AddJournal extends React.Component {
           <Row className="btncenter">
             <div className="submitbtn">
               <Button className="categorybtntext submitbtn">Submit</Button>
+              <Button
+                onClick={() => this.onTrigger("close")}
+                className="categorybtntext submitbtn"
+              >
+                Cancel
+              </Button>
             </div>
           </Row>
         </div>

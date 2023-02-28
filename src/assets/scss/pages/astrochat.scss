@@ -464,8 +464,8 @@ body {
 
 // newappchat
 img.app-img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 10%;
   margin-right: 12px;
 }
@@ -518,11 +518,11 @@ iframe {
   margin-right: 6px !important;
 }
 
-[dir="ltr"] img.app-img {
-  margin-left: 2px;
-  width: 100%;
-  // height: 50px;
-}
+// [dir="ltr"] img.app-img {
+//   margin-left: 2px;
+//   width: 100%;
+//   // height: 50px;
+// }
 
 [dir="ltr"] .imglf {
   float: right;
@@ -595,17 +595,25 @@ button.categorybtntext.btn.btn-secondary {
   font-size: 12px;
 }
 .mainjouralborder:hover {
-  border: 0px !important;
-  background-color: #afb9af6e;
+  border: 5px !important;
+  background-color: #40c2ff;
   /* border: none; */
   cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  h5 {
+    color: #fff;
+  }
+  small {
+    color: #fff;
+  }
 }
 h4.calendertextmain {
   margin-left: 12px;
   margin-top: 12px;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 13px;
-  font-size: 13px;
+  font-size: 17px;
 }
 [dir] .mainjouralborder {
   border: 1px outset;
@@ -623,7 +631,7 @@ section.sectionjournalheading {
   padding: 2px;
 }
 
-h5.dayofcard {
+h6.dayofcard {
   font-size: 11px;
   margin-bottom: 2px;
   margin-top: 8px;
@@ -631,7 +639,7 @@ h5.dayofcard {
 }
 
 h2.dateincard {
-  margin-left: 16px;
+  // margin-left: 16px;
 }
 p.journalanser {
   margin-bottom: 0px;
@@ -696,21 +704,54 @@ h4.newjournalcreatl {
 ​
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #eeebeb; 
+  background: #eeebeb;
 }
 ​
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ece8e8; 
+  background: #ece8e8;
 }
 .messages.messaagehead {
-    width: 50% !important;
+  width: 50% !important;
 }
 .codex-editor__redactor {
-    padding-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+.dateincard.time.card {
+  border-radius: 8px;
+  border-width: 5px;
+}
+
+// rohit css
+h5.dayofcard {
+  color: #000 !important;
+  font-size: 12px;
+}
+h2.dateincard {
+  font-size: 16px;
+  font-weight: 700;
+}
+.dateincard.time.text-center.card {
+  border: 1px solid#cdcdcd;
+  padding-top: 2px;
+}
+.mid-text p {
+  font-size: 12px;
+  line-height: 20px;
+}
+p.timeincard {
+  font-size: 9px;
+  padding-bottom: 5px;
+}
+[dir] section.sectionjournalheading {
+  padding: 2px;
+  margin-bottom: 8px;
+}
+button.categorybtntext.btn.btn-secondary {
+  padding: 12px;
 }

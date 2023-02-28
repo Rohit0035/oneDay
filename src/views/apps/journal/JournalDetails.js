@@ -1,9 +1,19 @@
 import React from "react";
-import { Col, Row, Button, Container, Modal, ModalHeader, ModalBody } from "reactstrap";
+import {
+  Col,
+  Row,
+  Button,
+  Container,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
 // import { Link } from "react-router-dom";
 // import { Container } from "reactstrap";
 // import { FcAddImage } from "react-icons/fc";
 import { BsCamera } from "react-icons/bs";
+import AddJournal from "./AddJournal";
+
 import { BsMic } from "react-icons/bs";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import { TbFilePencil } from "react-icons/tb";
@@ -16,9 +26,13 @@ import ReactEditor from "./constants/ReactEditor";
 // import Countdown from "react-countdown";
 
 class JournalDetails extends React.Component {
-  state = {
-    uploadfile: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      uploadfile: "",
+      openjournal: "",
+    };
+  }
 
   onDrop = (acceptedFiles) => {
     this.setState({ acceptedfilupload: acceptedFiles[0] });
@@ -33,20 +47,16 @@ class JournalDetails extends React.Component {
       });
     }
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-    };
 
-    this.toggle = this.toggle.bind(this);
-  }
+  handleAddJournal = (data) => {
+    console.log(data);
+    this.setState({ openjournal: data });
+  };
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  }
+  handleCallback = (childData) => {
+    console.log(childData);
+    this.setState({ openjournal: childData });
+  };
   render() {
     const maxSize = 1 * 1024 * 1024;
     return (
@@ -59,8 +69,8 @@ class JournalDetails extends React.Component {
               <p className="addnewcatmain ">
                 <AiOutlinePlusSquare
                   size={25}
-                  // onClick={() => this.handleAddJournal("Open")}
-                  onClick={this.toggle}
+                  onClick={() => this.handleAddJournal("Open")}
+                  // onClick={this.toggle}
                   className="categorybtntext mb-2"
                 >
                   +Journal
@@ -69,31 +79,41 @@ class JournalDetails extends React.Component {
             </Col>
           </Row>
         </div>
-        <div className="chat-header dateheadtimelast">
-          <Container>
-            <Row>
-              <Col md="12">
-                <div className="view-img">
-                  <img
-                    contentEditable
-                    src={Buyimg}
-                    className="view-img"
-                    alt=""
-                  />
-                </div>
-              </Col>
-              <Col md="12">
-                <ReactEditor />
-              </Col>
-            </Row>
-          </Container>
-        </div>
+
+        {this.state.openjournal === "Open" ? (
+          <>
+            <AddJournal parentCallback={this.handleCallback} />
+          </>
+        ) : (
+          <>
+            <div className="chat-header dateheadtimelast">
+              <Container>
+                <Row>
+                  <Col md="12">
+                    <div className="view-img">
+                      <img
+                        contentEditable
+                        src={Buyimg}
+                        className="view-img"
+                        alt=""
+                      />
+                    </div>
+                  </Col>
+                  <Col md="12">
+                    <ReactEditor />
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </>
+        )}
+
         {/* model */}
         <div>
           {/* <Button color="danger" >
             {this.props.buttonLabel}
           </Button> */}
-          <Modal
+          {/* <Modal
             isOpen={this.state.modal}
             toggle={this.toggle}
             className={this.props.className}
@@ -108,7 +128,7 @@ class JournalDetails extends React.Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </ModalBody>
-          </Modal>
+          </Modal> */}
         </div>
       </>
     );

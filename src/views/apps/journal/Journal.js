@@ -12,6 +12,9 @@ import {
   CustomInput,
 } from "reactstrap";
 import "../../../assets/scss/pages/astrochat.scss";
+
+import { CgChevronLeftO, CgChevronRightO } from "react-icons/cg";
+
 // import Buyimg from "../../../assets/img/boy-img.png";
 // import Countdown from "react-countdown";
 // import ChatAppList from "./ChatAppList";
@@ -48,6 +51,10 @@ class Journal extends React.Component {
     console.log(data);
     this.setState({ openjournal: data });
   };
+
+  handleCallback = (childData) => {
+    this.setState({ openjournal: childData });
+  };
   render() {
     return (
       <>
@@ -56,6 +63,15 @@ class Journal extends React.Component {
             {this.state.closediv == "on" ? (
               <>
                 <div class="contact-list1">
+                  <CgChevronLeftO
+                    // style={{
+                    //   display: `${
+                    //     this.state.closediv === "on" ? "visible" : "none"
+                    //   }`,
+                    // }}
+                    onClick={() => this.handledivClose("on off")}
+                    size={25}
+                  />
                   <h1 class="title">My Journal</h1>
                   <ul>
                     <li>
@@ -93,36 +109,33 @@ class Journal extends React.Component {
             ) : null}
 
             <div class="contact-list">
-              {/* <div className="container custonswitchforhidediv"> */}
-              {/* <CustomInput
-                  type="switch"
-                  id="exampleCustomSwitch"
-                  name="customSwitch"
-                  inline
-                  onClick={() => this.handledivClose("on off")}
-                ></CustomInput> */}
-              {/* </div> */}
-
               <div className="container">
-                <CustomInput
+                <CgChevronRightO
+                  // style={{
+                  //   display: `${
+                  //     this.state.closediv === "off" ? "blog" : "none"
+                  //   }`,
+                  // }}
+                  onClick={() => this.handledivClose("on off")}
+                  size={25}
+                />
+                {/* <CustomInput
                   type="switch"
                   className="mt-2 ml-1 custonswitchforhidediv "
                   id="exampleCustomSwitch"
                   name="customSwitch"
                   inline
                   onClick={() => this.handledivClose("on off")}
-                ></CustomInput>
+                ></CustomInput> */}
                 <h1 class="title">Journal</h1>
                 <JournalList />
               </div>
-
-              {/* <JourDetailList /> */}
             </div>
             <div class="messages messaagehead">
               <div class=" jounaldetailsmainhead">
-                {this.state.openjournal == "Open" ? (
+                {this.state.openjournal === "Open" ? (
                   <>
-                    <AddJournal />
+                    <AddJournal parentCallback={this.handleCallback} />
                   </>
                 ) : (
                   <>
